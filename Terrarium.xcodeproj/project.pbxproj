@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA000001 /* AquariumApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000001; };
+		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000002; };
+		AA000003 /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000003; };
+		AA000004 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000004; };
+		AA000005 /* TimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000005; };
+		AA000006 /* AquariumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000006; };
+		AA000007 /* AquariumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000007; };
+		AA000008 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000008; };
+		AA000009 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000009; };
+		AA00000A /* CreatureEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000A; };
+		AA00000B /* OceanBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000B; };
+		AA00000C /* SharedCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000C; };
+		AA00000D /* SharedTimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000D; };
+		AA00000E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB00000E; };
+		AA000010 /* AquariumWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000010; };
+		AA000011 /* AquariumWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000011; };
+		AA000012 /* AquariumWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000012; };
+		AA000013 /* SharedCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000C; };
+		AA000014 /* SharedTimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000D; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD000001;
+			proxyType = 1;
+			remoteGlobalIDString = AE000001;
+			remoteInfo = Terrarium;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB000001 /* AquariumApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumApp.swift; sourceTree = "<group>"; };
+		AB000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AB000003 /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
+		AB000004 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		AB000005 /* TimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfDay.swift; sourceTree = "<group>"; };
+		AB000006 /* AquariumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumViewModel.swift; sourceTree = "<group>"; };
+		AB000007 /* AquariumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumView.swift; sourceTree = "<group>"; };
+		AB000008 /* CreatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureView.swift; sourceTree = "<group>"; };
+		AB000009 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
+		AB00000A /* CreatureEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureEditorView.swift; sourceTree = "<group>"; };
+		AB00000B /* OceanBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OceanBackgroundView.swift; sourceTree = "<group>"; };
+		AB00000C /* SharedCreature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCreature.swift; sourceTree = "<group>"; };
+		AB00000D /* SharedTimeOfDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTimeOfDay.swift; sourceTree = "<group>"; };
+		AB00000E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB00000F /* Terrarium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Terrarium.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB000010 /* AquariumWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidget.swift; sourceTree = "<group>"; };
+		AB000011 /* AquariumWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidgetBundle.swift; sourceTree = "<group>"; };
+		AB000012 /* AquariumWidgetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquariumWidgetViews.swift; sourceTree = "<group>"; };
+		AB000013 /* AquariumWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AquariumWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB000014 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		AF000001 = {
+			isa = PBXGroup;
+			children = (
+				AF000002 /* Terrarium */,
+				AF000007 /* AquariumWidget */,
+				AF000008 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AF000002 /* Terrarium */ = {
+			isa = PBXGroup;
+			children = (
+				AB000001 /* AquariumApp.swift */,
+				AB000002 /* ContentView.swift */,
+				AF000003 /* Models */,
+				AF000004 /* ViewModels */,
+				AF000005 /* Views */,
+				AF000006 /* Shared */,
+				AB00000E /* Assets.xcassets */,
+				AF000009 /* Preview Content */,
+			);
+			path = Terrarium;
+			sourceTree = "<group>";
+		};
+		AF000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB000003 /* Creature.swift */,
+				AB000004 /* Bubble.swift */,
+				AB000005 /* TimeOfDay.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AF000004 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AB000006 /* AquariumViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AF000005 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB000007 /* AquariumView.swift */,
+				AB000008 /* CreatureView.swift */,
+				AB000009 /* BubbleView.swift */,
+				AB00000A /* CreatureEditorView.swift */,
+				AB00000B /* OceanBackgroundView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AF000006 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AB00000C /* SharedCreature.swift */,
+				AB00000D /* SharedTimeOfDay.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AF000007 /* AquariumWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AB000010 /* AquariumWidget.swift */,
+				AB000011 /* AquariumWidgetBundle.swift */,
+				AB000012 /* AquariumWidgetViews.swift */,
+			);
+			path = AquariumWidget;
+			sourceTree = "<group>";
+		};
+		AF000008 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB00000F /* Terrarium.app */,
+				AB000013 /* AquariumWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AF000009 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AB000014 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE000001 /* Terrarium */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1000001;
+			buildPhases = (
+				B2000001 /* Sources */,
+				B2000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Terrarium;
+			productName = Terrarium;
+			productReference = AB00000F;
+			productType = "com.apple.product-type.application";
+		};
+		AE000002 /* AquariumWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B1000002;
+			buildPhases = (
+				B2000003 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AquariumWidgetExtension;
+			productName = AquariumWidgetExtension;
+			productReference = AB000013;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AE000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					AE000002 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = B1000003;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AF000001;
+			productRefGroup = AF000008;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE000001 /* Terrarium */,
+				AE000002 /* AquariumWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B2000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA00000E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B2000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001 /* AquariumApp.swift in Sources */,
+				AA000002 /* ContentView.swift in Sources */,
+				AA000003 /* Creature.swift in Sources */,
+				AA000004 /* Bubble.swift in Sources */,
+				AA000005 /* TimeOfDay.swift in Sources */,
+				AA000006 /* AquariumViewModel.swift in Sources */,
+				AA000007 /* AquariumView.swift in Sources */,
+				AA000008 /* CreatureView.swift in Sources */,
+				AA000009 /* BubbleView.swift in Sources */,
+				AA00000A /* CreatureEditorView.swift in Sources */,
+				AA00000B /* OceanBackgroundView.swift in Sources */,
+				AA00000C /* SharedCreature.swift in Sources */,
+				AA00000D /* SharedTimeOfDay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000010 /* AquariumWidget.swift in Sources */,
+				AA000011 /* AquariumWidgetBundle.swift in Sources */,
+				AA000012 /* AquariumWidgetViews.swift in Sources */,
+				AA000013 /* SharedCreature.swift in Sources */,
+				AA000014 /* SharedTimeOfDay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B3000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B3000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Terrarium/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.terrarium.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Terrarium/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.terrarium.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B3000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AquariumWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AquariumWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.terrarium.app.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B3000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AquariumWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = AquariumWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.terrarium.app.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B1000001 /* Build configuration list for PBXNativeTarget "Terrarium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3000003 /* Debug */,
+				B3000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1000002 /* Build configuration list for PBXNativeTarget "AquariumWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3000005 /* Debug */,
+				B3000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B1000003 /* Build configuration list for PBXProject "Terrarium" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3000001 /* Debug */,
+				B3000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AD000001 /* Project object */;
+}
