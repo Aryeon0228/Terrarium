@@ -23,7 +23,9 @@ class AquariumViewModel: ObservableObject {
     }
 
     deinit {
-        stopTimers()
+        moveTimer?.invalidate()
+        bubbleTimer?.invalidate()
+        timeCheckTimer?.invalidate()
     }
 
     // MARK: - Timer Management
