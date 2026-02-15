@@ -26,6 +26,7 @@
 		AA000012 /* AquariumWidgetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000012; };
 		AA000013 /* SharedCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000C; };
 		AA000014 /* SharedTimeOfDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB00000D; };
+		AA000015 /* AquariumWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB000013; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = AE000001;
 			remoteInfo = Terrarium;
+		};
+		AC000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD000001;
+			proxyType = 1;
+			remoteGlobalIDString = AE000002;
+			remoteInfo = AquariumWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -161,10 +169,12 @@
 			buildPhases = (
 				B2000001 /* Sources */,
 				B2000002 /* Resources */,
+				B2000004 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B4000001 /* PBXTargetDependency */,
 			);
 			name = Terrarium;
 			productName = Terrarium;
@@ -268,6 +278,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2000004 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA000015 /* AquariumWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE000002 /* AquariumWidgetExtension */;
+			targetProxy = AC000002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B3000001 /* Debug */ = {
