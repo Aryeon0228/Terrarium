@@ -8,12 +8,12 @@ struct SharedCreature: Codable, Identifiable {
     let emoji: String
     let size: Double
 
-    init(from creature: Creature) {
-        self.id = creature.id
-        self.name = creature.name
-        self.typeRawValue = creature.type.rawValue
-        self.emoji = creature.type.emoji
-        self.size = Double(creature.size)
+    init(id: UUID = UUID(), name: String, typeRawValue: String, emoji: String, size: Double = 40) {
+        self.id = id
+        self.name = name
+        self.typeRawValue = typeRawValue
+        self.emoji = emoji
+        self.size = size
     }
 }
 

@@ -10,11 +10,11 @@ struct AquariumWidgetEntryView: View {
     var body: some View {
         switch widgetFamily {
         case .systemSmall:
-            SmallFishbowlWidget(entry: entry)
+            SmallFishbowlWidget(entry: entry, phase: entry.animationPhase)
         case .systemMedium:
-            MediumFishbowlWidget(entry: entry)
+            MediumFishbowlWidget(entry: entry, phase: entry.animationPhase)
         default:
-            SmallFishbowlWidget(entry: entry)
+            SmallFishbowlWidget(entry: entry, phase: entry.animationPhase)
         }
     }
 }
@@ -23,6 +23,7 @@ struct AquariumWidgetEntryView: View {
 
 struct SmallFishbowlWidget: View {
     let entry: AquariumEntry
+    let phase: Double
 
     var body: some View {
         GeometryReader { geo in
@@ -37,11 +38,11 @@ struct SmallFishbowlWidget: View {
                     FishbowlWaterView(timeOfDay: entry.timeOfDay)
                     LightRaysView()
                     SandFloorView()
-                    SeaweedGroupView()
+                    SeaweedGroupView(phase: phase)
                     CoralGroupView()
-                    CreaturesLayerView(creatures: entry.creatures)
-                    BubblesLayerView()
-                    WaterSurfaceView()
+                    CreaturesLayerView(creatures: entry.creatures, phase: phase)
+                    BubblesLayerView(phase: phase)
+                    WaterSurfaceView(phase: phase)
                     GlassHighlightView()
                 }
                 .clipShape(Circle())
@@ -71,6 +72,7 @@ struct SmallFishbowlWidget: View {
 
 struct MediumFishbowlWidget: View {
     let entry: AquariumEntry
+    let phase: Double
 
     var body: some View {
         GeometryReader { geo in
@@ -82,11 +84,11 @@ struct MediumFishbowlWidget: View {
                     FishbowlWaterView(timeOfDay: entry.timeOfDay)
                     LightRaysView()
                     SandFloorView()
-                    SeaweedGroupView()
+                    SeaweedGroupView(phase: phase)
                     CoralGroupView()
-                    CreaturesLayerView(creatures: entry.creatures)
-                    BubblesLayerView()
-                    WaterSurfaceView()
+                    CreaturesLayerView(creatures: entry.creatures, phase: phase)
+                    BubblesLayerView(phase: phase)
+                    WaterSurfaceView(phase: phase)
                     GlassHighlightView()
                 }
                 .clipShape(RoundedRectangle(cornerRadius: 18))
@@ -304,32 +306,36 @@ struct SandShape: Shape {
 // MARK: - 해초
 
 struct SeaweedGroupView: View {
+    let phase: Double
+
     var body: some View {
         GeometryReader { geo in
+            let sway = CGFloat(sin(phase * 2 * .pi)) * 3
+
             ZStack {
                 SeaweedStrand(
-                    baseX: geo.size.width * 0.14,
+                    baseX: geo.size.width * 0.14 + sway,
                     baseY: geo.size.height * 0.79,
                     height: geo.size.height * 0.30,
                     width: 4,
                     color: Color(red: 0.18, green: 0.58, blue: 0.28)
                 )
                 SeaweedStrand(
-                    baseX: geo.size.width * 0.22,
+                    baseX: geo.size.width * 0.22 - sway * 0.7,
                     baseY: geo.size.height * 0.81,
                     height: geo.size.height * 0.18,
                     width: 3,
                     color: Color(red: 0.28, green: 0.68, blue: 0.32)
                 )
                 SeaweedStrand(
-                    baseX: geo.size.width * 0.83,
+                    baseX: geo.size.width * 0.83 + sway * 0.8,
                     baseY: geo.size.height * 0.78,
                     height: geo.size.height * 0.27,
                     width: 3.5,
                     color: Color(red: 0.15, green: 0.52, blue: 0.25)
                 )
                 SeaweedStrand(
-                    baseX: geo.size.width * 0.76,
+                    baseX: geo.size.width * 0.76 - sway * 0.6,
                     baseY: geo.size.height * 0.80,
                     height: geo.size.height * 0.20,
                     width: 3,
@@ -469,25 +475,35 @@ struct CoralBranch: View {
 
 struct CreaturesLayerView: View {
     let creatures: [SharedCreature]
+    let phase: Double
 
-    private let positions: [(CGFloat, CGFloat)] = [
+    // 각 물고기의 기본 위치와 이동 범위
+    private static let basePositions: [(x: CGFloat, y: CGFloat)] = [
         (0.35, 0.33), (0.68, 0.42), (0.48, 0.55),
         (0.26, 0.48), (0.72, 0.30), (0.55, 0.38),
     ]
-    private let facingRight: [Bool] = [true, false, true, false, true, false]
 
     var body: some View {
         GeometryReader { geo in
             let display = Array(creatures.prefix(6))
             ForEach(Array(display.enumerated()), id: \.element.id) { index, creature in
-                let pos = positions[index % positions.count]
+                let base = Self.basePositions[index % Self.basePositions.count]
+                // 각 물고기마다 다른 속도/방향으로 이동
+                let angle = phase * 2 * .pi + Double(index) * 1.2
+                let dx: CGFloat = CGFloat(sin(angle)) * 0.08
+                let dy: CGFloat = CGFloat(cos(angle * 0.7 + 0.5)) * 0.04
+                let x = base.x + dx
+                let y = base.y + dy
+                // phase에 따라 방향 전환
+                let movingRight = sin(angle) >= 0
+
                 CreatureDrawing(
                     creature: creature,
-                    facing: facingRight[index % facingRight.count]
+                    facing: movingRight
                 )
                 .position(
-                    x: geo.size.width * pos.0,
-                    y: geo.size.height * pos.1
+                    x: geo.size.width * x,
+                    y: geo.size.height * y
                 )
             }
         }
@@ -780,21 +796,29 @@ struct CreatureDrawing: View {
 // MARK: - 거품
 
 struct BubblesLayerView: View {
-    private let bubbles: [(x: CGFloat, y: CGFloat, size: CGFloat, opacity: Double)] = [
-        (0.24, 0.26, 5.0, 0.50),
-        (0.56, 0.18, 3.5, 0.40),
-        (0.72, 0.36, 4.0, 0.42),
-        (0.40, 0.44, 3.0, 0.35),
-        (0.17, 0.50, 2.5, 0.30),
-        (0.82, 0.24, 3.5, 0.38),
+    let phase: Double
+
+    private static let baseBubbles: [(x: CGFloat, y: CGFloat, size: CGFloat, opacity: Double)] = [
+        (0.24, 0.50, 5.0, 0.50),
+        (0.56, 0.45, 3.5, 0.40),
+        (0.72, 0.55, 4.0, 0.42),
+        (0.40, 0.60, 3.0, 0.35),
+        (0.17, 0.65, 2.5, 0.30),
+        (0.82, 0.48, 3.5, 0.38),
     ]
 
     var body: some View {
         GeometryReader { geo in
-            ForEach(0..<bubbles.count, id: \.self) { i in
-                let b = bubbles[i]
-                BubbleDot(size: b.size, bubbleOpacity: b.opacity)
-                    .position(x: geo.size.width * b.x, y: geo.size.height * b.y)
+            ForEach(0..<Self.baseBubbles.count, id: \.self) { i in
+                let b = Self.baseBubbles[i]
+                // 거품이 위로 떠오르는 효과 + 좌우 흔들림
+                let rise = CGFloat(phase + Double(i) * 0.15).truncatingRemainder(dividingBy: 1.0)
+                let y = b.y - rise * 0.45
+                let wobble = CGFloat(sin((phase * 2 * .pi) + Double(i) * 1.5)) * 0.03
+                let x = b.x + wobble
+
+                BubbleDot(size: b.size, bubbleOpacity: b.opacity * (1.0 - Double(rise) * 0.5))
+                    .position(x: geo.size.width * x, y: geo.size.height * max(y, 0.05))
             }
         }
     }
@@ -834,13 +858,15 @@ struct BubbleDot: View {
 // MARK: - 물결 수면
 
 struct WaterSurfaceView: View {
+    let phase: Double
+
     var body: some View {
         ZStack(alignment: .top) {
-            WaveShape(amplitude: 3, frequency: 2, phase: 0)
+            WaveShape(amplitude: 3, frequency: 2, phase: CGFloat(phase * 2 * .pi))
                 .fill(Color.white.opacity(0.07))
                 .frame(height: 12)
 
-            WaveShape(amplitude: 2, frequency: 3, phase: 1.2)
+            WaveShape(amplitude: 2, frequency: 3, phase: CGFloat(phase * 2 * .pi) + 1.2)
                 .fill(Color.white.opacity(0.04))
                 .frame(height: 10)
         }
@@ -948,11 +974,22 @@ struct WavyLineShape: Shape {
     AquariumEntry(
         date: Date(),
         creatures: [
-            SharedCreature(from: Creature(name: "니모", type: .fish)),
-            SharedCreature(from: Creature(name: "해파리", type: .jellyfish)),
-            SharedCreature(from: Creature(name: "꼬북이", type: .turtle)),
+            SharedCreature(name: "니모", typeRawValue: "물고기", emoji: "🐠"),
+            SharedCreature(name: "해파리", typeRawValue: "해파리", emoji: "🪼"),
+            SharedCreature(name: "꼬북이", typeRawValue: "거북이", emoji: "🐢"),
         ],
-        timeOfDay: .afternoon
+        timeOfDay: .afternoon,
+        animationPhase: 0
+    )
+    AquariumEntry(
+        date: Date().addingTimeInterval(300),
+        creatures: [
+            SharedCreature(name: "니모", typeRawValue: "물고기", emoji: "🐠"),
+            SharedCreature(name: "해파리", typeRawValue: "해파리", emoji: "🪼"),
+            SharedCreature(name: "꼬북이", typeRawValue: "거북이", emoji: "🐢"),
+        ],
+        timeOfDay: .afternoon,
+        animationPhase: 0.5
     )
 }
 
@@ -962,11 +999,23 @@ struct WavyLineShape: Shape {
     AquariumEntry(
         date: Date(),
         creatures: [
-            SharedCreature(from: Creature(name: "니모", type: .fish)),
-            SharedCreature(from: Creature(name: "해파리", type: .jellyfish)),
-            SharedCreature(from: Creature(name: "꼬북이", type: .turtle)),
-            SharedCreature(from: Creature(name: "뿌기", type: .pufferfish)),
+            SharedCreature(name: "니모", typeRawValue: "물고기", emoji: "🐠"),
+            SharedCreature(name: "해파리", typeRawValue: "해파리", emoji: "🪼"),
+            SharedCreature(name: "꼬북이", typeRawValue: "거북이", emoji: "🐢"),
+            SharedCreature(name: "뿌기", typeRawValue: "복어", emoji: "🐡"),
         ],
-        timeOfDay: .afternoon
+        timeOfDay: .afternoon,
+        animationPhase: 0
+    )
+    AquariumEntry(
+        date: Date().addingTimeInterval(300),
+        creatures: [
+            SharedCreature(name: "니모", typeRawValue: "물고기", emoji: "🐠"),
+            SharedCreature(name: "해파리", typeRawValue: "해파리", emoji: "🪼"),
+            SharedCreature(name: "꼬북이", typeRawValue: "거북이", emoji: "🐢"),
+            SharedCreature(name: "뿌기", typeRawValue: "복어", emoji: "🐡"),
+        ],
+        timeOfDay: .afternoon,
+        animationPhase: 0.5
     )
 }

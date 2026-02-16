@@ -5,6 +5,8 @@ struct AquariumEntry: TimelineEntry {
     let date: Date
     let creatures: [SharedCreature]
     let timeOfDay: SharedTimeOfDay
+    /// 0.0 ~ 1.0 사이의 애니메이션 위상값
+    let animationPhase: Double
 }
 
 struct AquariumTimelineProvider: TimelineProvider {
@@ -12,37 +14,48 @@ struct AquariumTimelineProvider: TimelineProvider {
         AquariumEntry(
             date: Date(),
             creatures: [],
-            timeOfDay: .current()
+            timeOfDay: .current(),
+            animationPhase: 0
         )
     }
 
     func getSnapshot(in context: Context, completion: @escaping (AquariumEntry) -> Void) {
-        let entry = createEntry()
+        let entry = createEntry(date: Date(), phase: 0)
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<AquariumEntry>) -> Void) {
-        let entry = createEntry()
+        let now = Date()
+        let totalFrames = 12
+        let intervalMinutes = 5
 
-        // 1시간마다 새로고침 (시간대 변경 반영)
-        let nextUpdate = Calendar.current.date(byAdding: .hour, value: 1, to: Date()) ?? Date()
-        let timeline = Timeline(entries: [entry], policy: .after(nextUpdate))
+        var entries: [AquariumEntry] = []
+        for i in 0..<totalFrames {
+            let entryDate = Calendar.current.date(byAdding: .minute, value: i * intervalMinutes, to: now) ?? now
+            let phase = Double(i) / Double(totalFrames)
+            entries.append(createEntry(date: entryDate, phase: phase))
+        }
+
+        let nextUpdate = Calendar.current.date(byAdding: .minute, value: totalFrames * intervalMinutes, to: now) ?? now
+        let timeline = Timeline(entries: entries, policy: .after(nextUpdate))
         completion(timeline)
     }
 
-    private func createEntry() -> AquariumEntry {
+    private func createEntry(date: Date, phase: Double) -> AquariumEntry {
         if let data = SharedAquariumData.load() {
             let timeOfDay = SharedTimeOfDay(rawValue: data.timeOfDay) ?? .current()
             return AquariumEntry(
-                date: Date(),
+                date: date,
                 creatures: data.creatures,
-                timeOfDay: timeOfDay
+                timeOfDay: timeOfDay,
+                animationPhase: phase
             )
         }
         return AquariumEntry(
-            date: Date(),
+            date: date,
             creatures: [],
-            timeOfDay: .current()
+            timeOfDay: .current(),
+            animationPhase: phase
         )
     }
 }

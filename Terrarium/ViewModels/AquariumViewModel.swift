@@ -166,7 +166,7 @@ class AquariumViewModel: ObservableObject {
     // MARK: - App Groups (Widget Sync)
     func syncToWidget() {
         let shared = SharedAquariumData(
-            creatures: creatures.map { SharedCreature(from: $0) },
+            creatures: creatures.map { SharedCreature(id: $0.id, name: $0.name, typeRawValue: $0.type.rawValue, emoji: $0.type.emoji, size: Double($0.size)) },
             timeOfDay: timeOfDay.rawValue,
             lastUpdated: Date()
         )
